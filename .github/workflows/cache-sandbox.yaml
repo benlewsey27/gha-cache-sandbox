@@ -6,13 +6,26 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate file
-        run: |
-          echo "Hello World!" > message.txt
-          cat message.txt
-
-      - name: Save file to cache
-        uses: actions/cache/save@v4
+      - name: Restore file from cache
+        id: message-cache
+        uses: actions/cache/restore@v4
         with:
           path: message.txt
           key: MESSAGE
+      
+      - name: Print file from cache
+        if: steps.message-cache.outputs.cache-hit == 'true'
+        run: |
+          pwd
+          ls -la
+
+      # - name: Generate file
+      #   run: |
+      #     echo "Hello World!" > message.txt
+      #     cat message.txt
+
+      # - name: Save file to cache
+      #   uses: actions/cache/save@v4
+      #   with:
+      #     path: message.txt
+      #     key: MESSAGE
