@@ -8,5 +8,11 @@ jobs:
     steps:
       - name: Generate file
         run: |
-          echo "Hello World!" > message
-          cat message
+          echo "Hello World!" > message.txt
+          cat message.txt
+
+      - name: Save file to cache
+        uses: actions/cache/save@v4
+        with:
+          path: message.txt
+          key: MESSAGE
