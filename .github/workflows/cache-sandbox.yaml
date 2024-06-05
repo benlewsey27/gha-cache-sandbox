@@ -1,0 +1,11 @@
+name: "Cache Sandbox Runner"
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Step
+        run: |
+          echo "Hello World!"
