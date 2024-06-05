@@ -6,6 +6,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: Test Step
+      - name: Generate file
         run: |
-          echo "Hello World!"
+          echo "Hello World!" > message
+          cat message
